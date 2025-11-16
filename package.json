@@ -1,0 +1,26 @@
+{
+  "name": "email-consumer-service",
+  "version": "1.0.0",
+  "description": "Servicio consumidor de eventos para envío de emails",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "kafka",
+    "consumer",
+    "email",
+    "microservice"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "kafkajs": "^2.2.4",
+    "nodemailer": "^6.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
