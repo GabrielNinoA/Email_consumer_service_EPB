@@ -10,7 +10,7 @@ class EmailService {
     initializeTransporter() {
         try {
             if (!process.env.EMAIL_HOST || !process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
-                console.warn('[EMAIL-SERVICE] ⚠️  Configuración de email incompleta');
+                console.warn('[EMAIL-SERVICE] Configuración de email incompleta');
                 return;
             }
 
@@ -31,9 +31,9 @@ class EmailService {
             });
 
             this.isConfigured = true;
-            console.log('[EMAIL-SERVICE] ✅ Servicio de email configurado');
+            console.log('[EMAIL-SERVICE] Servicio de email configurado');
         } catch (error) {
-            console.error('[EMAIL-SERVICE] ❌ Error configurando email:', error.message);
+            console.error('[EMAIL-SERVICE] Error configurando email:', error.message);
             this.isConfigured = false;
         }
     }
@@ -55,7 +55,7 @@ class EmailService {
             second: '2-digit'
         });
 
-        const subject = `📊 Reporte Generado - Sistema Quejas Boyacá`;
+        const subject = `Reporte Generado - Sistema Quejas Boyacá`;
 
         const html = `
         <!DOCTYPE html>
@@ -75,13 +75,13 @@ class EmailService {
         <body>
             <div class="container">
                 <div class="header">
-                    <h1>📊 Reporte Generado</h1>
+                    <h1>Reporte Generado</h1>
                     <p>Sistema de Quejas - Departamento de Boyacá</p>
                 </div>
                 
                 <div class="content">
                     <div class="info-box">
-                        <h3>👤 Información del Usuario</h3>
+                        <h3>Información del Usuario</h3>
                         <p><strong>Nombre de Usuario:</strong> <span class="highlight">${username || 'Sistema'}</span></p>
                         <p><strong>Hora y Fecha:</strong> ${formattedDate}</p>
                         <p><strong>Acción:</strong> ${action}</p>
@@ -89,7 +89,7 @@ class EmailService {
 
                     ${reportData ? `
                     <div class="info-box">
-                        <h3>📈 Resumen del Reporte</h3>
+                        <h3>Resumen del Reporte</h3>
                         <p><strong>Total de Quejas:</strong> ${reportData.total_quejas || 'N/A'}</p>
                         <p><strong>Total de Entidades:</strong> ${reportData.total_entidades || 'N/A'}</p>
                         <p><strong>Quejas del Día:</strong> ${reportData.quejas_hoy || 'N/A'}</p>
@@ -98,7 +98,7 @@ class EmailService {
                     ` : ''}
 
                     <div class="info-box">
-                        <h3>🔍 Trazabilidad</h3>
+                        <h3>Trazabilidad</h3>
                         <p><strong>Trace ID:</strong> <code>${traceId}</code></p>
                         <p><strong>Timestamp:</strong> ${timestamp}</p>
                     </div>
@@ -148,7 +148,7 @@ Generado automáticamente el ${formattedDate}
 
         const result = await this.transporter.sendMail(mailOptions);
         
-        console.log(`[EMAIL-SERVICE] ✅ Email enviado [TraceID: ${traceId}] [MessageID: ${result.messageId}]`);
+        console.log(`[EMAIL-SERVICE] Email enviado [TraceID: ${traceId}] [MessageID: ${result.messageId}]`);
         
         return {
             success: true,
